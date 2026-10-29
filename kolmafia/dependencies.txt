@@ -1,7 +1,17 @@
 https://github.com/donCannoli-burns/dTrack main
 https://github.com/donCannoli-burns/dUpdates main
 https://github.com/loathers/garbage-collector.git release
-https://github.com/loathers/combo.git release
+https://github.com/donCannoli-burns/don_combo release
 https://github.com/soolar/CONSUME.ash.git master
 https://github.com/loathers/UberPvPOptimizer.git master
 https://github.com/Pantocyclus/PVP_MAB.git release
+https://github.com/donCannoli-burns/don_custom_functions
+https://github.com/donCannoli-burns/don-ash-lib
+https://github.com/donCannoli-burns/don_philter
+https://github.com/donCannoli-burns/UnderTheSea
+https://github.com/donCannoli-burns/don_ascend
+https://github.com/donCannoli-burns/mall-manager
+https://github.com/donCannoli-burns/KOL-WaterSheep
+https://github.com/donCannoli-burns/don_grimoire
+https://github.com/donCannoli-burns/don_libram
+https://github.com/donCannoli-burns/don_eslint-plugin-libram
