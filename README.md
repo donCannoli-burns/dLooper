@@ -44,6 +44,12 @@ In-game requirements inherited from upstream:
 - All CBB recipes
 - A lavaco lamp if you own Left-Hand Man
 
+## Shared-helper migration
+
+The former `kolmafia/scripts/ploophelpers/lowerstats.ash` and `tapion_praccess.ash` were moved into the already declared [don_custom_functions](https://github.com/donCannoli-burns/don_custom_functions) dependency as `scripts/don_lowerstats.ash` and `scripts/don_praccess.ash`. Their original gameplay behavior is retained; the PirateRealm script now imports `don_lowerstats.ash`. The upstream source remains available in Git history. `pLoop.ash` does not directly call either helper.
+
+To invoke the separate PirateRealm helper after installing dependencies, use `call don_praccess.ash`. **It spends resources and performs gameplay; do not use as a smoke test.** Do not rely on the removed filenames after a clean checkout.
+
 ## How to use
 
 The command remains `ploop` (renaming a GitHub repository does **not** rename the installed ASH entrypoint):
