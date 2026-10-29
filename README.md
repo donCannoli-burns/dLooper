@@ -31,7 +31,7 @@ If you previously installed the original upstream project, use `git list` to con
 
 KoLmafia checkout dependencies are declared in [`kolmafia/dependencies.txt`](kolmafia/dependencies.txt). The declared list now includes:
 
-- **Tracking and updates:** [dTrack](https://github.com/donCannoli-burns/dTrack) and [dUpdates](https://github.com/donCannoli-burns/dUpdates) (replacing upstream pTrack/pUpdates).
+- **Tracking and updates:** [dTrack](https://github.com/donCannoli-burns/dTrack) remains a separate, GPL-3.0-licensed runtime dependency pending tests. The legacy `pUpdates` command is now provided through the already installed [don_custom_functions](https://github.com/donCannoli-burns/don_custom_functions) and its [don-ash-lib](https://github.com/donCannoli-burns/don-ash-lib) dependency, so `dUpdates` no longer requires a separate checkout.
 - **Loop integrations:** [garbage-collector (garbo)](https://github.com/loathers/garbage-collector), [don_combo (release)](https://github.com/donCannoli-burns/don_combo) (replacing upstream combo), [CONSUME.ash](https://github.com/soolar/CONSUME.ash), [UberPvPOptimizer](https://github.com/loathers/UberPvPOptimizer), and [PVP_MAB](https://github.com/Pantocyclus/PVP_MAB).
 - **Additional don scripts:** [don_custom_functions](https://github.com/donCannoli-burns/don_custom_functions), [don-ash-lib](https://github.com/donCannoli-burns/don-ash-lib), [don_philter](https://github.com/donCannoli-burns/don_philter), [UnderTheSea](https://github.com/donCannoli-burns/UnderTheSea), [don_ascend](https://github.com/donCannoli-burns/don_ascend), and [mall-manager](https://github.com/donCannoli-burns/mall-manager).
 - **Experimental/source-oriented projects:** [KOL-WaterSheep](https://github.com/donCannoli-burns/KOL-WaterSheep), [don_grimoire](https://github.com/donCannoli-burns/don_grimoire), [don_libram](https://github.com/donCannoli-burns/don_libram), and [don_eslint-plugin-libram](https://github.com/donCannoli-burns/don_eslint-plugin-libram).
@@ -81,3 +81,30 @@ Run `ploop help` to learn how to modify the custom acquisition list. The inherit
 - Garden setup
 
 **Caution:** This script can perform consequential game actions, including spending resources and ascending. Confirm its configuration and dependencies before running a loop.
+
+## Safe pwrapper replacement
+
+The original [pwrapper](https://github.com/Prusias-kol/pwrapper) could automatically choose unsupported choices, fight a combat, retry a failed loop, and incorrectly treat an old completion marker as success. These paths are **not** carried into dLooper. The replacement lives in `ploop_guard_lib.ash` and the CLI entrypoints `pwrapper.ash` and `don_ploop_guard.ash`.
+
+- `pwrapper` or `don_ploop_guard`: read-only status; no gameplay
+- `pwrapper run`: explicitly approve **one** `ploop fullday` cycle (30-second prompt defaults to no)
+- On abort or CLI failure: stop and record `don_ploop_guard_last_status` / `don_ploop_guard_last_error`; **never auto-retry**
+- A normal CLI return is **not** proof that every step completed; inspect pLoop checkpoints
+
+Old `prusias_pwrapper_loopScript`, `prusias_pwrapper_retryAttempts`, and automatic choice/combat handling are deliberately not honored for execution safety. Do not keep the standalone `dwrapper` installed alongside this replacement; both provide `pwrapper.ash`.
+
+## Absorption / legacy checkout migration
+
+The pUpdates command was absorbed into `don_custom_functions/scripts/pUpdates.ash`, with version/file logic in `don-ash-lib/scripts/don_updates_lib.ash`. The `prusias_pUpdates_<name>_localVersion` preferences and `data/dUpdates/` changelog files remain compatible. The separate `dUpdates` checkout is no longer declared as a dLooper dependency. Before removing old checkouts, inspect `git list` and verify that the new commands compile.
+
+```text
+git update donCannoli-burns-don-ash-lib-main
+git update donCannoli-burns-don_custom_functions-main
+git update donCannoli-burns-dLooper-main
+git sync
+verify pUpdates.ash
+verify pwrapper.ash
+```
+
+**Do not delete or overwrite custom user data files**, especially `data/personalChecklistData.txt` or historical `data/Profit Tracking/` snapshots. No live KoLmafia runtime tests have yet been performed.
+
