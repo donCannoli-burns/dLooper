@@ -1,0 +1,14 @@
+-1	12
+0	pUpdates for ploop are now installed
+1	Now uses UberPvpOptimizer and PVP_MAB to run pvp fights right before ascending 
+2	Supports small loop
+3	Supports punching mirror owned personally or in your clan stash! 
+4	Spends 1k meat per day trying to replenish kingdom smoke supply for loop scripts. Do ploop help if you want to disable! 
+5	MAJOR FEATURES: Now supports custom item list of things to try to acquire before ascending. Do ploop help to check it out!
+6	MAJOR PATH SUPPORT: Supports You,Robot looping with Kasekopf's script 
+7	New optional pref (prusias_ploop_nightcapMPA) to set nightcap MPA for those who had an MPA so high, CONSUME was overcapping them. 
+8	Two new additional optional preferences listed in ploop help. Lets you add a personal script to your breakfast and modify garbo arguments whenever garbo is called. 
+9	New command to access PirateRealm and run garbo targetting cockroaches. Thanks Tapion! Requires PirateRealm Membership Packet.
+10	Separated Ploop's optional configurable preferences to a new command.
+11	Pre-run pulls and sailing (for optional cockroach targeting) has been made much more robust. 
+12	MAJOR UPDATE: You can now set and load save states for ploop. This means you can init on one path, save it, and swap back to your setup at any time! Run ploop help to start using this feature. 
