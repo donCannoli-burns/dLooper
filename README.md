@@ -29,7 +29,14 @@ If you previously installed the original upstream project, use `git list` to con
 
 ## Dependencies and hard requirements
 
-KoLmafia dependencies are declared in [`kolmafia/dependencies.txt`](kolmafia/dependencies.txt). This fork uses [dTrack](https://github.com/donCannoli-burns/dTrack) and [dUpdates](https://github.com/donCannoli-burns/dUpdates) instead of their upstream counterparts. Other declared dependencies remain garbo, combo, CONSUME.ash, UberPvPOptimizer, and PVP_MAB.
+KoLmafia checkout dependencies are declared in [`kolmafia/dependencies.txt`](kolmafia/dependencies.txt). The declared list now includes:
+
+- **Tracking and updates:** [dTrack](https://github.com/donCannoli-burns/dTrack) and [dUpdates](https://github.com/donCannoli-burns/dUpdates) (replacing upstream pTrack/pUpdates).
+- **Loop integrations:** [garbage-collector (garbo)](https://github.com/loathers/garbage-collector), [don_combo (release)](https://github.com/donCannoli-burns/don_combo) (replacing upstream combo), [CONSUME.ash](https://github.com/soolar/CONSUME.ash), [UberPvPOptimizer](https://github.com/loathers/UberPvPOptimizer), and [PVP_MAB](https://github.com/Pantocyclus/PVP_MAB).
+- **Additional don scripts:** [don_custom_functions](https://github.com/donCannoli-burns/don_custom_functions), [don-ash-lib](https://github.com/donCannoli-burns/don-ash-lib), [don_philter](https://github.com/donCannoli-burns/don_philter), [UnderTheSea](https://github.com/donCannoli-burns/UnderTheSea), [don_ascend](https://github.com/donCannoli-burns/don_ascend), and [mall-manager](https://github.com/donCannoli-burns/mall-manager).
+- **Experimental/source-oriented projects:** [KOL-WaterSheep](https://github.com/donCannoli-burns/KOL-WaterSheep), [don_grimoire](https://github.com/donCannoli-burns/don_grimoire), [don_libram](https://github.com/donCannoli-burns/don_libram), and [don_eslint-plugin-libram](https://github.com/donCannoli-burns/don_eslint-plugin-libram).
+
+**Compatibility warning:** The last group contains Python/TypeScript/Node tooling and libraries, not all directly runnable KoLmafia scripts. Installing them as KoLmafia Git dependencies does not install their Python/npm packages or compile TypeScript; some repositories may sync no usable KoLmafia files. In particular, `don_libram` defaults to its source-oriented `main` branch rather than a purpose-built KoLmafia `release` branch. This expanded dependency set is **experimental and untested in a clean KoLmafia checkout**. Before running the loop, run `git list` and `git sync`, check for conflicting script filenames, and verify the scripts you intend to use. The checkout may be substantially larger than upstream.
 
 In-game requirements inherited from upstream:
 - Clan VIP
